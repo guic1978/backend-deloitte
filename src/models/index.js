@@ -2,23 +2,34 @@
 
 const fs = require('fs');
 const path = require('path');
-const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '../../config/config.json')[env];
+const { Sequelize } = require('sequelize');
+const dotenv = require('dotenv');
+dotenv.config();
 const db = {};
 
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    config
-  );
-}
+// config.retry = {
+//   match: [
+//     Sequelize.ConnectionError,
+//     Sequelize.ConnectionTimedOutError,
+//     Sequelize.TimeoutError,
+//     /Deadlock/i,
+//     'SQLITE_BUSY',
+//   ],
+//   max: 3,
+// };
+
+let sequelize = new Sequelize(
+  process.env.DATABASE_NAME,
+  process.env.DATABASE_LOGIN,
+  process.env.DATABASE_PWD,
+  {
+    dialect: 'mysql',
+    host: process.env.DATABASE_HOST,
+    ssl: true,
+    port: process.env.DATABASE_PORT,
+  }
+);
 
 fs.readdirSync(__dirname)
   .filter((file) => {

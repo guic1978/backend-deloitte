@@ -4,8 +4,6 @@ const bodyParser = require('body-parser');
 const app = express();
 const routes = require('./src/api/routes');
 
-const sequelize = require('./src/util/database');
-
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -18,8 +16,14 @@ app.use((req, res, next) => {
   next();
 });
 
-sequelize.authenticate();
+//sequelize.authenticate();
 
 app.use('/api', routes());
+
+app.use((error, req, res, next) => {
+  const status = error.statusCode || 500;
+  let message = error.message;
+  res.status(status).json({ status, message });
+});
 
 app.listen(process.env.PORT || 8080);
