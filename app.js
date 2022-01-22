@@ -18,8 +18,6 @@ app.use((req, res, next) => {
   next();
 });
 
-//sequelize.authenticate();
-
 app.use('/api', routes());
 
 app.use((error, req, res, next) => {

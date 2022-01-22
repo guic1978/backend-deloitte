@@ -4,11 +4,18 @@ const { User } = require('../models');
 const { HttpStatus } = require('../enums/http-status.enum');
 
 exports.postCreate = async () => {
+  // const userDto = {
+  //   name: 'Guilherme Reis',
+  //   email: 'guilherme.guic@gmail.com',
+  //   password: '12345',
+  //   mainRole: 'Admin',
+  // };
+
   const userDto = {
-    name: 'Guilherme Reis',
-    email: 'guilherme.guic@gmail.com',
+    name: 'Guilherme Reis Viewer',
+    email: 'guilherme.guic2@gmail.com',
     password: '12345',
-    mainRole: 'Admin',
+    mainRole: 'Viewer',
   };
 
   await checkIfNotExists(userDto.email);

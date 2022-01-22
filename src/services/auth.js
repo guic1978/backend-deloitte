@@ -51,6 +51,7 @@ const createJWT = (user) => {
     {
       name: user.name,
       email: user.email,
+      mainRole: user.mainRole,
       userId: user.id,
     },
     process.env.JWT_SECRET,

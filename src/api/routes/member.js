@@ -4,24 +4,32 @@ const {
   validatePutMembers,
 } = require('../validators/member');
 const hasErrorValidation = require('../middlewares/has-error-validation');
-const isAuth = require('../middlewares/is-auth');
+const isAuthenticated = require('../middlewares/is-authenticated');
+const isAuthorized = require('../middlewares/is-authorized');
 
 module.exports = function (router) {
   router.get('/members', memberController.getAll);
   router.get('/members/:id', memberController.getById);
   router.post(
     '/members',
-    isAuth,
+    isAuthenticated,
+    isAuthorized(['Admin']),
     validatePostMembers(),
     hasErrorValidation,
     memberController.postCreate
   );
   router.put(
     '/members/:id',
-    isAuth,
+    isAuthenticated,
+    isAuthorized(['Admin']),
     validatePutMembers(),
     hasErrorValidation,
     memberController.putUpdate
   );
-  router.delete('/members/:id', isAuth, memberController.deleteById);
+  router.delete(
+    '/members/:id',
+    isAuthenticated,
+    isAuthorized(['Admin']),
+    memberController.deleteById
+  );
 };

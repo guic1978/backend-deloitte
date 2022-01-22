@@ -19,6 +19,7 @@ module.exports = async (req, res, next) => {
     const user = await User.findByPk(decodedToken.userId);
     req.userId = +user.id;
     req.userName = user.name;
+    req.userMainRole = user.mainRole;
   } catch (err) {
     err.statusCode = err.statusCode || HttpStatus.INTERNAL_SERVER_ERROR;
     return next(err);
