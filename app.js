@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+//const UserService = require('./src/services/user');
+
 const app = express();
 const routes = require('./src/api/routes');
 
@@ -25,5 +27,7 @@ app.use((error, req, res, next) => {
   let message = error.message;
   res.status(status).json({ status, message });
 });
+
+//UserService.postCreate();
 
 app.listen(process.env.PORT || 8080);
