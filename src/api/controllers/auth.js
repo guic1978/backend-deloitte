@@ -7,6 +7,13 @@ exports.postLogin = async (req, res, next) => {
     password: req.body.password,
   };
 
-  const result = await AuthServices.postLogin(authDto);
-  res.status(HttpStatus.OK).json(result);
+  try {
+    const result = await AuthServices.postLogin(authDto);
+    res.status(HttpStatus.OK).json(result);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+    }
+    next(err);
+  }
 };
