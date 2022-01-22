@@ -1,8 +1,8 @@
 const { HttpStatus } = require('../../enums/http-status.enum');
-const PostServices = require('../../services/post');
+const MemberServices = require('../../services/member');
 
 exports.getAll = async (req, res, next) => {
-  const result = await PostServices.getAll();
+  const result = await MemberServices.getAll();
   res.status(HttpStatus.OK).json(result);
 };
 
@@ -10,7 +10,7 @@ exports.getById = async (req, res, next) => {
   const id = req.params.id;
 
   try {
-    const result = await PostServices.getById(id);
+    const result = await MemberServices.getById(id);
     res.status(HttpStatus.OK).json(result);
   } catch (err) {
     if (!err.statusCode) {
@@ -21,26 +21,25 @@ exports.getById = async (req, res, next) => {
 };
 
 exports.postCreate = async (req, res, next) => {
-  const postDto = {
-    title: req.body.title,
-    content: req.body.content,
-    author: req.body.author,
-    date: new Date().toJSON(),
+  const memberDto = {
+    name: req.body.name,
+    email: req.body.email,
+    description: req.body.description,
   };
 
-  const result = await PostServices.postCreate(postDto);
+  const result = await MemberServices.postCreate(memberDto);
   res.status(HttpStatus.CREATED).json(result);
 };
 
 exports.putUpdate = async (req, res, next) => {
   const id = req.params.id;
-  const postDto = {
-    title: req.body.title,
-    content: req.body.content,
+  const memberDto = {
+    name: req.body.name,
+    description: req.body.description,
   };
 
   try {
-    const result = await PostServices.putUpdate(id, postDto);
+    const result = await MemberServices.putUpdate(id, memberDto);
     res.status(HttpStatus.NO_CONTENT).json(result);
   } catch (err) {
     if (!err.statusCode) {
@@ -54,7 +53,7 @@ exports.deleteById = async (req, res, next) => {
   const id = req.params.id;
 
   try {
-    const result = await PostServices.deleteById(id);
+    const result = await MemberServices.deleteById(id);
     res.status(HttpStatus.NO_CONTENT).json(result);
   } catch (err) {
     if (!err.statusCode) {

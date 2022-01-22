@@ -12,14 +12,10 @@ module.exports = {
         type: Sequelize.STRING,
       },
       email: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
       },
-      teamId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Teams', // name of Target model
-          key: 'id', // key in Target model that we're referencing
-        },
+      description: {
+        type: Sequelize.TEXT,
       },
       createdAt: {
         allowNull: false,
