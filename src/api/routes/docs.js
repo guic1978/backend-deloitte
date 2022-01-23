@@ -23,8 +23,8 @@ module.exports = function (router) {
           description: 'Local server',
         },
         {
-          url: 'http://localhost:8080/api',
-          description: 'Testing server',
+          url: 'https://cronos-backend-delloite.herokuapp.com/api',
+          description: 'Production server',
         },
       ],
       tags: [
