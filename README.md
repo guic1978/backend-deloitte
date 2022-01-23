@@ -27,3 +27,14 @@ Open my resume [https://www.linkedin.com/in/guilherme-reis-1a74a6b/](https://www
 
 #Published<br>
 Open [https://cronos-backend-delloite.herokuapp.com/api/docs/#/](https://cronos-backend-delloite.herokuapp.com/api/docs/#/)
+
+#Test Login<br>
+```
+Admin
+email: 'guilherme.guic@gmail.com'
+password: '12345'
+
+Viewer
+email: 'guilherme.guic2@gmail.com'
+password: '12345'
+```
