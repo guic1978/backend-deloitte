@@ -24,3 +24,6 @@ Open [https://github.com/guic1978/backend-deloitte](https://github.com/guic1978/
 
 #Created by Guilherme Reis<br>
 Open my resume [https://guic1978.github.io/resume/](https://guic1978.github.io/resume/)
+
+#Published<br>
+Open [https://cronos-backend-delloite.herokuapp.com/api/docs/#/] (https://cronos-backend-delloite.herokuapp.com/api/docs/#/)
