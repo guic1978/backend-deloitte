@@ -23,7 +23,7 @@ Thunder Client (REST)<br>
 Open [https://github.com/guic1978/backend-deloitte](https://github.com/guic1978/backend-deloitte)
 
 #Created by Guilherme Reis<br>
-Open my resume [https://guic1978.github.io/resume/](https://guic1978.github.io/resume/)
+Open my resume [https://www.linkedin.com/in/guilherme-reis-1a74a6b/](https://www.linkedin.com/in/guilherme-reis-1a74a6b/)
 
 #Published<br>
-Open [https://cronos-backend-delloite.herokuapp.com/api/docs/#/] (https://cronos-backend-delloite.herokuapp.com/api/docs/#/)
+Open [https://cronos-backend-delloite.herokuapp.com/api/docs/#/](https://cronos-backend-delloite.herokuapp.com/api/docs/#/)
