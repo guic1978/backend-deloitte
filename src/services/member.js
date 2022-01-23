@@ -21,6 +21,7 @@ exports.getById = async (id) => {
 };
 
 exports.postCreate = async (memberDto) => {
+  await checkIfNotExistsByEmail(memberDto.email);
   const member = await Member.create(memberDto);
   return new Promise((resolve) => {
     resolve({
@@ -59,6 +60,17 @@ const checkIfExists = async (id) => {
   if (!member) {
     const error = new Error('Item not found');
     error.statusCode = HttpStatus.NOT_FOUND;
+    throw error;
+  }
+
+  return new Promise((resolve) => resolve(member));
+};
+
+const checkIfNotExistsByEmail = async (email) => {
+  const member = await Member.findOne({ where: [{ email }] });
+  if (member) {
+    const error = new Error('Member already created');
+    error.statusCode = HttpStatus.CONFLICT;
     throw error;
   }
 

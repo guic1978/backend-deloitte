@@ -27,8 +27,15 @@ exports.postCreate = async (req, res, next) => {
     description: req.body.description,
   };
 
-  const result = await MemberServices.postCreate(memberDto);
-  res.status(HttpStatus.CREATED).json(result);
+  try {
+    const result = await MemberServices.postCreate(memberDto);
+    res.status(HttpStatus.CREATED).json(result);
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+    }
+    next(err);
+  }
 };
 
 exports.putUpdate = async (req, res, next) => {
