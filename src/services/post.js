@@ -1,6 +1,11 @@
 const { Post } = require('../models');
 const { HttpStatus } = require('../enums/http-status.enum');
 
+/**
+ * Retorna todos os posts cadastrados.
+ *
+ * @returns {Promise<{ data: Array<Object> }>} Lista de posts.
+ */
 exports.getAll = async () => {
   const posts = await Post.findAll();
   return new Promise((resolve) => {
@@ -10,6 +15,13 @@ exports.getAll = async () => {
   });
 };
 
+/**
+ * Retorna um post pelo seu id.
+ *
+ * @param {number} id - Id do post.
+ * @returns {Promise<{ data: Object }>} Dados do post encontrado.
+ * @throws {Error} Caso o post não seja encontrado (404).
+ */
 exports.getById = async (id) => {
   const post = await checkIfExists(id);
 

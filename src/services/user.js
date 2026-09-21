@@ -21,7 +21,7 @@ exports.postCreate = async () => {
   await checkIfNotExists(userDto.email);
 
   userDto.password = await bcrypt.hash(userDto.password, 12);
-  const user = User.create(userDto);
+  const user = await User.create(userDto);
 
   return new Promise((resolve) => {
     resolve({
